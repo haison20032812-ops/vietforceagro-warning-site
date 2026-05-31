@@ -57,7 +57,7 @@
       overflow: visible;
       position: relative;
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
+      grid-template-columns: minmax(320px, 0.9fr) minmax(360px, 1.1fr);
       gap: 34px;
       padding: clamp(22px, 4vw, 54px);
       background:
@@ -100,8 +100,8 @@
     .headline {
       margin: clamp(20px, 4vw, 42px) 0 18px;
       color: var(--yellow);
-      font-size: clamp(34px, 6vw, 72px);
-      line-height: 0.95;
+      font-size: clamp(30px, 4.8vw, 58px);
+      line-height: 1.02;
       font-weight: 900;
       letter-spacing: 0;
     }
@@ -110,11 +110,12 @@
       max-width: 620px;
       margin: 0;
       color: #ffffff;
-      font-size: clamp(18px, 2.6vw, 34px);
-      line-height: 1.08;
-      font-weight: 900;
-      text-transform: uppercase;
+      font-size: clamp(16px, 1.65vw, 22px);
+      line-height: 1.32;
+      font-weight: 700;
+      text-transform: none;
       overflow-wrap: anywhere;
+      white-space: normal;
     }
 
     .caption {
@@ -122,7 +123,7 @@
       padding-top: 28px;
       width: min(100%, 520px);
       color: #ffffff;
-      font-size: clamp(11px, 1.4vw, 20px);
+      font-size: clamp(12px, 1.2vw, 17px);
     }
 
     .caption p {
@@ -145,7 +146,7 @@
       gap: 12px;
       align-self: start;
       justify-self: center;
-      width: min(100%, 520px);
+      width: min(100%, 560px);
       max-height: none;
       min-height: 360px;
       border: 6px solid var(--yellow);
@@ -156,7 +157,7 @@
 
     .poster-media img {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 9 / 16;
       min-height: 0;
       object-fit: cover;
       display: block;
@@ -421,7 +422,7 @@
         <div class="poster-content">
           <div class="badge" id="publicBadge">CẢNH BÁO GIAO DỊCH</div>
           <h1 class="headline" id="publicHeadline">Lừa đảo</h1>
-          <p class="company" id="publicCompany">VIETFORCE INTERNATIONAL AGRO TRADING CO LTD</p>
+          <p class="company" id="publicCompany">Công ty VIETFORCE INTERNATIONAL AGRO TRADING CO LTD có anh giám đốc Lênh...</p>
           <div class="caption">
             <p id="publicCaption">Công ty</p>
             <strong id="publicFooter">Hãy kiểm chứng trước khi giao dịch</strong>
@@ -477,7 +478,7 @@
           </div>
 
           <div class="field full">
-            <label for="companyInput">Tên công ty</label>
+            <label for="companyInput">Nội dung bài viết</label>
             <textarea id="companyInput"></textarea>
           </div>
 
@@ -520,17 +521,24 @@
   <script>
     const defaults = {
       password: "123456",
-      badge: "CẢNH BÁO GIAO DỊCH",
-      headline: "Lừa đảo",
-      company: "VIETFORCE INTERNATIONAL\nAGRO TRADING CO LTD",
-      caption: "Công ty",
-      footer: "Hãy kiểm chứng trước khi giao dịch",
-      imageData: "",
-      imagesData: [],
+      badge: "BÀI PHẢN ÁNH CÁ NHÂN",
+      headline: "Công ty VIETFORCE INTERNATIONAL AGRO TRADING CO LTD quỵt lương",
+      company: "Công ty VIETFORCE INTERNATIONAL AGRO TRADING CO LTD có anh giám đốc Lênh. Anh không có tiền nhưng thích làm giám đốc, xong anh mở công ty, anh thuê nhân viên về làm. Để nhân viên làm cho đã, đến lúc đòi lương cái anh đuổi, xong anh hẹn trả lương, hẹn mãi hẹn mãi xong anh giở bài ra anh quỵt.\n\nCông ty này cũng không có xưởng, nhận hàng của khách xong đi gia công 2-3 nơi. Giao cho khách trễ thì xàm lìn bảo bị công an bắt rồi gian dối thêm. Có ông bạn thân tên Phong, Phong nói với Lênh là giờ đuổi nó rồi quỵt lương đi, nó làm gì được đâu.",
+      caption: "Người phản ánh: nhân viên bị nợ lương",
+      footer: "Kèm hình ảnh trao đổi và thông tin liên quan",
+      imageData: "assets/evidence-1.jpg",
+      imagesData: [
+        "assets/evidence-1.jpg",
+        "assets/evidence-2.jpg",
+        "assets/evidence-3.jpg",
+        "assets/evidence-4.jpg",
+        "assets/evidence-5.jpg",
+        "assets/evidence-6.jpg"
+      ],
       audioData: ""
     };
 
-    const storageKey = "vietforce-warning-site-v1";
+    const storageKey = "vietforce-warning-site-v2";
     let state = loadState();
 
     const publicBadge = document.getElementById("publicBadge");
